@@ -31,30 +31,35 @@ document.getElementById("areaR").innerHTML="Pole trójkąta o bokach:  "+s1+","+
 
 //Zadanie 3
 
-// const num=Math.ceil(Math.random()*10);
-// const gnum = prompt("Podaj liczbe: ");
+//  const num=Math.ceil(Math.random()*10);
+//  const gnum = prompt("Podaj liczbe: ");
 
-// if(num == gnum){
-//     console.log("Dobra robota! ");
-//     document.getElementById("addR").innerHTML="Trafiłeś";
-// }else{
-//     console.log("Nie trafiłeś :/ ")
-//     document.getElementById("addR").innerHTML="Szkoda nie trafiłeś :/ . Dobra liczbą była:"+num;
-// }
+//  if(num == gnum){
+//      console.log("Dobra robota! ");
+//      document.getElementById("addR").innerHTML="Trafiłeś";
+//  }else{
+//      console.log("Nie trafiłeś :/ ")
+//      document.getElementById("addR").innerHTML="Szkoda nie trafiłeś :/ . Dobra liczbą była:"+num;
+//  }
 
 //Zadanie 4
 
-const num1=parseFloat(prompt("Podaj pierwszą liczbę ; "))
-const num2=parseFloat(prompt("Podaj drugą liczbę ; "))
-const num3=parseFloat(prompt("Podaj trzecią liczbę ; "))
+// const num1=parseFloat(prompt("Podaj pierwszą liczbę ; "))
+// const num2=parseFloat(prompt("Podaj drugą liczbę ; "))
+// const num3=parseFloat(prompt("Podaj trzecią liczbę ; "))
 
-if( num1 >= num2 && num1 >= num3){
-    console.log("Pierwsza liczba jest największa"+num1)
-    document.getElementById("areaR").innerHTML="Pierwsza liczba jest najwieksza i jest nią:"+num1;
-}else if(num2 >= num1 && num1 >= num3){
-    console.log("Druga liczba jest największa"+num2)
-    document.getElementById("areaR").innerHTML="Druga liczba jest najwieksza i jest nią:"+num2;
-}else {
-    console.log("Trzecia liczba jest największa"+num3)
-    document.getElementById("areaR").innerHTML="Trzecia liczba jest najwieksza i jest nią:"+num3;
-}
+// if( num1 >= num2 && num1 >= num3){
+//     console.log("Pierwsza liczba jest największa"+num1)
+//     document.getElementById("areaR").innerHTML="Pierwsza liczba jest najwieksza i jest nią:"+num1;
+// }else if(num2 >= num1 && num1 >= num3){
+//     console.log("Druga liczba jest największa"+num2)
+//     document.getElementById("areaR").innerHTML="Druga liczba jest najwieksza i jest nią:"+num2;
+// }else {
+//     console.log("Trzecia liczba jest największa"+num3)
+//     document.getElementById("areaR").innerHTML="Trzecia liczba jest najwieksza i jest nią:"+num3;
+// }
+
+//Zadanie 5
+let student1=(name:"John" , surname: "Doe" , age:25);
+console.log(student1.name +" "+student1.surname);
+console.log('Imie: $(student1.name), Nazwisko: $(student1.surname)')

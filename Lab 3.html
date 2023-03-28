@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="addR"></p>
+    <p id="areaR"></p>
+    <script src="js.js"></script>  
+</body>
+<h4>ZADANIE 5</h4>
+    <p>Podaj a:</p>
+    <input type="number" id="a">
+    <p>Podaj b:</p>
+    <input type="number" id="b">
+    <button onClick="NWD()">SZUKAJ NWD</button><br>
+
+    <p id="nwd"></p>
+    
+    <script>
+        function nwd(a, b) {
+            if (b == 0) {
+                return a;
+            } else {
+                 return nwd(b, a % b);
+            }
+        }
+
+        function NWD(){
+            const a = parseInt(document.getElementById("a").value);
+            const b = parseInt(document.getElementById("b").value);
+            const wynik = nwd(a, b);
+            console.log(wynik);
+            document.getElementById("nwd").innerHTML = "Największy wspólny dzielnik liczb " + a + " i " + b + " to " + wynik + ".";
+        }
+    </script>
+</html>
