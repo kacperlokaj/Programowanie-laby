@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Formularz rejestracyjny</title>
+	<style>
+		form {
+			width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		select,
+		textarea {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+			line-height: 1.5;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #007bff;
+			color: #fff;
+			font-size: 16px;
+			line-height: 1.5;
+			cursor: pointer;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0062cc;
+		}
+
+		.error {
+			color: red;
+			font-weight: bold;
+			margin-top: 5px;
+		 }
+	</style>
+</head>
+<body>
+	<form action="#" method="post">
+		<label for="first_name">Imię:</label>
+		<input type="text" id="first_name" name="first_name" required>
+
+		<label for="last_name">Nazwisko:</label>
+		<input type="text" id="last_name" name="last_name" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">Hasło:</label>
+		<input type="password" id="password" name="password" required minlength="8">
+
+		<label for="gender">Płeć:</label>
+		<select id="gender" name="gender" required>
+			<option value="">Wybierz płeć</option>
+			<option value="male">Mężczyzna</option>
+			<option value="female">Kobieta</option>
+			<option value="other">Inna</option>
+		</select>
+
+		<label for="phone">Telefon:</label>
+		<input type="tel" id="phone" name="phone" required>
+
+		<label for="birthdate">Data urodzenia:</label>
+		<input type="date" id="birthdate" name="birthdate" required>
+
+		<label for="country">Kraj:</label>
+		<input type="text" id="country" name="country" required>
+		
+		<label for="province">Województwo:</label>
+		<input type="text" id="province" name="province">
+		
+		<label for="address">Adres zamieszkania:</label>
+        <input type="text" id="address" name="address">
+        <label for="same_address">Adres korespondencyjny jest taki sam jak adres zamieszkania:</label>
+        <input type="checkbox" id="same_address_checkbox" checked>
+        
+        <label for="correspondence_address">Adres korespondencyjny:</label>
+        <input type="text" id="correspondence_address" name="correspondence_address" disabled>
+        
+        <input type="submit" value="Zapisz">
+    </form>
+    
+    <script>
+        var passwordInput = document.getElementById('password');
+        passwordInput.addEventListener('input', function() {
+            if (passwordInput.validity.patternMismatch) {
+                passwordInput.setCustomValidity('Hasło musi mieć co najmniej 8 znaków.');
+            } else {
+                passwordInput.setCustomValidity('');
+            }
+        });
+    
+        var countryInput = document.getElementById('country');
+        var provinceInput = document.getElementById('province');
+        var addressInput = document.getElementById('address');
+        var sameAddressCheckbox = document.getElementById('same_address_checkbox');
+        var correspondenceAddressInput = document.getElementById('correspondence_address');
+    
+        countryInput.addEventListener('input', function() {
+            if (countryInput.value.toLowerCase() === 'polska') {
+                provinceInput.style.display = 'none';
+                provinceInput.disabled = true;
+                var selectProvinceInput = document.createElement('select');
+                selectProvinceInput.id = 'province_select';
+                selectProvinceInput.name = 'province_select';
+                selectProvinceInput.style.display = 'block';
+                selectProvinceInput.style.width = '100%';
+                selectProvinceInput.style.padding = '10px';
+                selectProvinceInput.style.marginBottom = '20px';
+                selectProvinceInput.style.border = '2px solid #ccc';
+                selectProvinceInput.style.borderRadius = '5px';
+                selectProvinceInput.style.fontSize = '16px';
+                selectProvinceInput.style.lineHeight = '1.5';
+                selectProvinceInput.style.boxSizing = 'border-box';
+                
+                var option1 = document.createElement('option');
+                option1.value = '';
+                option1.text = 'Wybierz województwo';
+                selectProvinceInput.add(option1);
+                
+                var option2 = document.createElement('option');
+                option2.value = 'podkarpackie';
+                option2.text = 'Podkarpackie';
+                selectProvinceInput.add(option2);
+                
+                
+                provinceInput.parentNode.insertBefore(selectProvinceInput, provinceInput);
+                provinceInput.parentNode.removeChild(provinceInput);
+            } else {
+                var provinceSelectInput = document.getElementById('province_select');
+                if (provinceSelectInput) {
+                    provinceSelectInput.style.display = 'none';
+                    provinceSelectInput.disabled = true;
+                    provinceSelectInput.parentNode.insertBefore(provinceInput, provinceSelectInput);
+                    provinceSelectInput.parentNode.removeChild(provinceSelectInput);
+                }
+                provinceInput.style.display = 'block';
+                provinceInput.disabled = false;
+            }
+            
+            addressInput.disabled = countryInput.value === '';
+        });
+    
+        sameAddressCheckbox.addEventListener('change', function() {
+            if (sameAddressCheckbox.checked) {
+                correspondenceAddressInput.style.display = 'none';
+                correspondenceAddressInput.disabled = true;
+            } else {
+                correspondenceAddressInput.style.display = 'block';
+                correspondenceAddressInput.disabled = false;
+            }
+        });
+</script>
+</body>
+</html>
+    
