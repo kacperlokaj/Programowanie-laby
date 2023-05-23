@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rejestracja</title>
+</head>
+<body>
+    <h1>Rejestracja</h1>
+    <form id="registrationForm" action="#" method="POST">
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="info1">Informacja 1:</label>
+        <input type="text" id="info1" name="info1" required><br>
+
+        <label for="info2">Informacja 2:</label>
+        <input type="text" id="info2" name="info2" required><br>
+
+        <label for="info3">Informacja 3:</label>
+        <input type="text" id="info3" name="info3" required><br>
+
+        <input type="submit" value="Zarejestruj">
+    </form>
+
+    <h2>Zarejestrowani użytkownicy:</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Email</th>
+                <th>Informacja 1</th>
+                <th>Informacja 2</th>
+                <th>Informacja 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Tutaj zostaną dynamicznie wstawione dane użytkowników -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Zatrzymaj domyślne zachowanie formularza
+
+            // Pobierz wartości wprowadzone przez użytkownika
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var info1 = document.getElementById("info1").value;
+            var info2 = document.getElementById("info2").value;
+            var info3 = document.getElementById("info3").value;
+
+            // Tworzenie nowego wiersza w tabeli
+            var table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+            var newRow = table.insertRow();
+
+            // Dodawanie komórek do nowego wiersza
+            var cell1 = newRow.insertCell();
+            cell1.appendChild(document.createTextNode(firstName));
+
+            var cell2 = newRow.insertCell();
+            cell2.appendChild(document.createTextNode(lastName));
+
+            var cell3 = newRow.insertCell();
+            cell3.appendChild(document.createTextNode(email));
+
+            var cell4 = newRow.insertCell();
+            cell4.appendChild(document.createTextNode(info1));
+
+            var cell5 = newRow.insertCell();
+            cell5.appendChild(document.createTextNode(info2));
+
+            var cell6 = newRow.insertCell();
+            cell6.appendChild(document.createTextNode(info3));
+
+            // Resetowanie formularza
+            document.getElementById("registrationForm").reset();
+        });
+    </script>
+</body>
+</html>
