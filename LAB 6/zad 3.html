@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wyniki</title>
+</head>
+<body>
+    <h1>Wyniki</h1>
+    <div id="wyniki"></div>
+
+    <script>
+        class Trapez {
+            constructor(wysokosc, podstawaa, podstawab, nazwa) {
+                this.wysokosc = wysokosc;
+                this.podstawaa = podstawaa;
+                this.podstawab = podstawab;
+                this.nazwa = nazwa;
+            }
+          
+            obliczPole() {
+                return 0.5 * ((this.podstawaa + this.podstawab) * this.wysokosc);
+            }
+          
+            porownaj(innyTrapez) {
+                if (this.obliczPole() > innyTrapez.obliczPole()) {
+                    return this;
+                } else {
+                    return innyTrapez;
+                }
+            }
+        }
+          
+        const Trapez1 = new Trapez(8, 10, 6, "Trapez 1");
+        const Trapez2 = new Trapez(12, 15, 9, "Trapez 2");
+        const Trapez3 = new Trapez(6, 8, 4, "Trapez 3");
+        
+        const wyniki = document.querySelector("#wyniki");
+        wyniki.innerHTML = "";
+        
+        const Trapezy = [Trapez1, Trapez2, Trapez3];
+        Trapezy.forEach((Trapez) => {
+            const pole = Trapez.obliczPole();
+            const paragraph = document.createElement("p");
+            paragraph.textContent = `Nazwa: ${Trapez.nazwa}, Pole: ${pole}`;
+            wyniki.appendChild(paragraph);
+        });
+        
+        const wiekszyTrapez = Trapez1.porownaj(Trapez2);
+        const paragraph = document.createElement("p");
+        paragraph.textContent = `Większy Trapez to ${wiekszyTrapez.nazwa} z polem ${wiekszyTrapez.obliczPole()}`;
+        wyniki.appendChild(paragraph);
+    </script>
+</body>
+</html>

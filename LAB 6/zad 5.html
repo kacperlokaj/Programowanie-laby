@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Porównywanie obwodów prostokątów</title>
+</head>
+
+<body>
+  <h1>Porównywanie obwodów prostokątów</h1>
+
+  <div id="wynik-prostokat"></div>
+
+  <script>
+    class Prostokat {
+      constructor(wysokosc, szerokosc, nazwa) {
+        this.wysokosc = wysokosc;
+        this.szerokosc = szerokosc;
+        this.nazwa = nazwa;
+      }
+
+      obliczObwod() {
+        return 2 * (this.wysokosc + this.szerokosc);
+      }
+    }
+
+    function porownajObwodyHTML(prostokat1, prostokat2) {
+      const obwod1 = prostokat1.obliczObwod();
+      const obwod2 = prostokat2.obliczObwod();
+
+      let wiekszyProstokat;
+      if (obwod1 > obwod2) {
+        wiekszyProstokat = prostokat1;
+      } else {
+        wiekszyProstokat = prostokat2;
+      }
+
+      const wynikHTML = `<p>Większy prostokąt to ${wiekszyProstokat.nazwa} z obwodem ${wiekszyProstokat.obliczObwod()}</p>`;
+      return wynikHTML;
+    }
+
+    const prostokat1 = new Prostokat(10, 20, "Prostokąt 1");
+    const prostokat2 = new Prostokat(5, 15, "Prostokąt 2");
+
+    const wynikElement = document.getElementById("wynik-prostokat");
+    wynikElement.innerHTML = porownajObwodyHTML(prostokat1, prostokat2);
+  </script>
+</body>
+
+</html>
