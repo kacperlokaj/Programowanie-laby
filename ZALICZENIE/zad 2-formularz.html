@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz samochodu</title>
+    <link rel="stylesheet" type="text/css" href="style-zad2.css">
+    <script>
+        function validateForm() {
+            var marka = document.getElementById("marka").value;
+            var model = document.getElementById("model").value;
+            var vin = document.getElementById("vin").value;
+            var rokProdukcji = document.getElementById("rokProdukcji").value;
+            var pojemnoscSilnika = document.getElementById("pojemnoscSilnika").value;
+            var wlasciciel = document.getElementById("wlasciciel").value;
+
+            if (marka === "") {
+                document.getElementById("errorMarka").innerHTML = "Wprowadź markę samochodu.";
+                return false;
+            }
+
+            if (model === "") {
+                document.getElementById("errorModel").innerHTML = "Wprowadź model samochodu.";
+                return false;
+            }
+
+            if (vin === "") {
+                document.getElementById("errorVin").innerHTML = "Wprowadź numer VIN samochodu.";
+                return false;
+            }
+
+            if (rokProdukcji === "") {
+                document.getElementById("errorRokProdukcji").innerHTML = "Wprowadź rok produkcji samochodu.";
+                return false;
+            }
+
+            if (pojemnoscSilnika === "") {
+                document.getElementById("errorPojemnoscSilnika").innerHTML = "Wprowadź pojemność silnika samochodu.";
+                return false;
+            }
+
+            if (wlasciciel === "") {
+                document.getElementById("errorWlasciciel").innerHTML = "Wprowadź właściciela samochodu.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Formularz samochodu</h1>
+    <form onsubmit="return validateForm()">
+        <label for="marka">Marka:</label>
+        <input type="text" id="marka samochodu">
+        <span id="errorMarka" class="error"></span><br><br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model samochodu">
+        <span id="errorModel" class="error"></span><br><br>
+
+        <label for="vin">Numer VIN:</label>
+        <input type="text" id="vin">
+        <span id="errorVin" class="error"></span><br><br>
+
+        <label for="rokProdukcji">Rok produkcji:</label>
+        <input type="text" id="rokProdukcji">
+        <span id="errorRokProdukcji" class="error"></span><br><br>
+
+        <label for="pojemnoscSilnika">Pojemność silnika:</label>
+        <input type="text" id="pojemnoscSilnika">
+        <span id="errorPojemnoscSilnika" class="error"></span><br><br>
+
+        <label for="wlasciciel">Właściciel:</label>
+        <input type="text" id="wlasciciel">
+        <span id="errorWlasciciel" class="error"></span><br><br>
+
+        <input type="submit" value="Zapisz">
+    </form>
+</body>
+</html>
+
+
